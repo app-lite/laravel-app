@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\Post\Entity;
 
+use App\Application\Command\Post\Post\PostCommand;
+
 class Post
 {
     public function __construct(
@@ -38,5 +40,16 @@ class Post
     public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
+    }
+
+    public static function createFromCommand(PostCommand $command): self
+    {
+        return new self(
+            $command->id,
+            $command->categoryId,
+            $command->text,
+            $command->description,
+            $command->createdAt,
+        );
     }
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\Post\Entity;
 
+use App\Application\Command\Post\PostCategory\PostCategoryCommand;
+
 class PostCategory
 {
     public function __construct(
@@ -26,5 +28,14 @@ class PostCategory
     public function getDescription(): ?string
     {
         return $this->description;
+    }
+
+    public static function createFromCommand(PostCategoryCommand $command): self
+    {
+        return new self(
+            $command->id,
+            $command->title,
+            $command->description,
+        );
     }
 }
