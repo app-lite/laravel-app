@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5aa33c4c9c59a25291445d8226153066",
+    "content-hash": "300315a1ad65969139b6e01b2952cf30",
     "packages": [
         {
             "name": "brick/math",
@@ -2734,6 +2734,51 @@
                 }
             ],
             "time": "2022-03-27T21:42:02+00:00"
+        },
+        {
+            "name": "samdark/hydrator",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/samdark/hydrator.git",
+                "reference": "8c9f84bbb31f48a09832ed4d30289e929cb00e53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/samdark/hydrator/zipball/8c9f84bbb31f48a09832ed4d30289e929cb00e53",
+                "reference": "8c9f84bbb31f48a09832ed4d30289e929cb00e53",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "samdark\\hydrator\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Makarov",
+                    "email": "sam@rmcreative.ru"
+                }
+            ],
+            "description": "Allows to extract data from an object or create a new object based on data for the purpose of persisting state. Works with private and protected properties.",
+            "keywords": [
+                "extract",
+                "hydrate",
+                "hydrator"
+            ],
+            "support": {
+                "issues": "https://github.com/samdark/hydrator/issues",
+                "source": "https://github.com/samdark/hydrator"
+            },
+            "time": "2017-05-17T08:15:51+00:00"
         },
         {
             "name": "symfony/console",
@@ -7769,7 +7814,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0.2"
+        "php": "8.1.*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.2.0"
