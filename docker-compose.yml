@@ -1,0 +1,83 @@
+version: '3'
+
+services:
+    dev-laravel-nginx:
+        build:
+            context: ./etc/docker/development
+            dockerfile: nginx.docker
+        volumes:
+            - .:/app
+        depends_on:
+            - dev-laravel-php-fpm
+        ports:
+            - "8080:80"
+
+    dev-laravel-php-fpm:
+        build:
+            context: ./etc/docker/development
+            dockerfile: php-fpm.docker
+        volumes:
+            - .:/app
+        depends_on:
+            - dev-laravel-mongo
+            - dev-laravel-postgres
+            - dev-laravel-redis
+        environment:
+            - XDEBUG_CONFIG=remote_enable=1 remote_mode=req remote_port=9001 idekey=phpstorm remote_connect_back=0
+            - PHP_IDE_CONFIG=serverName=Docker
+
+    dev-laravel-php-cli:
+        build:
+            context: ./etc/docker/development
+            dockerfile: php-cli.docker
+        volumes:
+            - .:/app
+            - composer:/root/.composer/cache
+        depends_on:
+            - dev-laravel-mongo
+            - dev-laravel-postgres
+            - dev-laravel-redis
+
+    dev-laravel-postgres:
+        image: postgres:14.2-alpine
+        volumes:
+            - dev-laravel-postgres:/var/lib/postgresql
+        environment:
+            POSTGRES_USER: app
+            POSTGRES_PASSWORD: secret
+            POSTGRES_DB: app
+        ports:
+            - "54320:5432"
+
+    dev-laravel-mongo:
+        image: mongo:5
+        ports:
+            - "27017:27017"
+        tmpfs:
+            - /data/db:rw,noexec,nosuid,size=2G
+        command: --smallfiles --noprealloc --nojournal
+
+    dev-laravel-node-watch:
+        image: node:17-alpine
+        volumes:
+            - .:/app
+        working_dir: /app
+        command: sh -c "until [ -f .ready ] ; do sleep 1 ; done && npm run watch"
+
+    dev-laravel-node:
+        image: node:17-alpine
+        volumes:
+            - .:/app
+        working_dir: /app
+
+    dev-laravel-redis:
+        image: redis:6.0.9
+        volumes:
+            - dev-laravel-redis:/data
+        ports:
+            - "63790:6379"
+
+volumes:
+    dev-laravel-postgres:
+    dev-laravel-redis:
+    composer:
