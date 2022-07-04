@@ -25,6 +25,7 @@
             "App\\": "app/",
             "App\\Application\\": "src/Application/",
             "App\\Domain\\": "src/Domain/",
+            "App\\Infrastructure\\": "src/Infrastructure/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

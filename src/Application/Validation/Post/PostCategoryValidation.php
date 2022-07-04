@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Validator\Post;
+namespace App\Application\Validation\Post;
 
-interface PostValidator
+interface PostCategoryValidation
 {
     public function validate(array $data): mixed;
 }
