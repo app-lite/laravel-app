@@ -1,5 +1,5 @@
 up: docker-up
-init: docker-down-clear docker-build docker-up
+init: docker-down-clear docker-build docker-up docker-composer-install env-generate docker-migrate docker-fixtures docker-assets-install docker-assets-dev
 test: docker-test
 
 docker-up:
@@ -8,8 +8,15 @@ docker-up:
 docker-down-clear:
 	docker-compose down -v --remove-orphans
 
+env-generate:
+	cp .env.example .env
+	docker-compose run --rm dev-laravel-php-cli php artisan key:generate
+
 docker-build:
 	docker-compose build
+
+docker-composer-install:
+	docker-compose run --rm dev-laravel-php-cli composer install
 
 docker-migrate:
 	docker-compose run --rm dev-laravel-php-cli php artisan migrate
