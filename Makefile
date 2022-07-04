@@ -11,5 +11,11 @@ docker-down-clear:
 docker-build:
 	docker-compose build
 
+docker-migrate:
+	docker-compose run --rm dev-laravel-php-cli php artisan migrate
+
+docker-fixtures:
+	docker-compose run --rm dev-laravel-php-cli php artisan db:seed
+
 docker-test:
 	docker-compose run --rm dev-laravel-php-cli php vendor/bin/phpunit --testdox
