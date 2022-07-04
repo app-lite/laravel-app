@@ -17,5 +17,11 @@ docker-migrate:
 docker-fixtures:
 	docker-compose run --rm dev-laravel-php-cli php artisan db:seed
 
+docker-assets-install:
+	docker-compose run --rm dev-laravel-node yarn install
+
+docker-assets-dev:
+	docker-compose run --rm dev-laravel-node yarn run dev
+
 docker-test:
 	docker-compose run --rm dev-laravel-php-cli php vendor/bin/phpunit --testdox
