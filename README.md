@@ -11,3 +11,5 @@ Open app - http://localhost:8080
 
 Running Tests:  
 `make test`
+
+Similar application on Symfony 6 + Codeception 5 - https://github.com/app-lite/symfony-app
