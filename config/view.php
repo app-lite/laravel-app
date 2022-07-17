@@ -14,7 +14,7 @@ return [
     */
 
     'paths' => [
-        base_path('src/UI/Http/Web/templates'),
+        base_path('src/UI/Http/Web/templates/blade'),
     ],
 
     /*

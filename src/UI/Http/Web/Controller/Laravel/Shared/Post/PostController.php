@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Http\Web\Controller\Shared\Post;
+namespace App\UI\Http\Web\Controller\Laravel\Shared\Post;
 
 use App\Application\Command\Post\Post\PostCommand;
 use App\Application\Command\Post\Post\PostHandler;

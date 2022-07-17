@@ -1,7 +1,7 @@
 <?php
 
-use App\UI\Http\Web\Controller\Shared\Post\PostCategoryController;
-use App\UI\Http\Web\Controller\Shared\Post\PostController;
+use App\UI\Http\Web\Controller\Laravel\Shared\Post\PostCategoryController;
+use App\UI\Http\Web\Controller\Laravel\Shared\Post\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/post/category/create', [PostCategoryController::class, 'create'])->name('post.category.create');
